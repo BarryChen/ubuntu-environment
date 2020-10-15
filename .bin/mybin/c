@@ -1,0 +1,21 @@
+#!/bin/sh
+echo "$1 $2 $3"
+P3=`echo -n $3`
+
+if [ $# -eq 0 ]; then
+    echo "grep str -w/find file_filter"
+    echo "please input str"
+elif [  "$2"x = "-w"x  ];then
+    grep -nrw --color=auto $1 .
+    echo "grep -nrw --color=auto $1 ."
+elif [ "$3" != "" || "$2" != "" ] ;then
+    grep -nrw --color=auto $1 $P3
+    echo "grep -nrw --color=auto $1 $P3"
+elif [ "$2x" = "findx" ] ;then
+#	echo "no do"
+    find . -name $3  -exec grep -nH  --color=auto $1 {} \;
+    #echo "find . -name "$3" -exec grep -nH --color=auto $1 {} \;"
+else
+    grep -nr --color=auto $1 .
+    echo "grep -nr --color=auto $1 ."
+fi

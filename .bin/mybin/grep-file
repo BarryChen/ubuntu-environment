@@ -1,0 +1,19 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]
+then
+    echo "grep str -w/find file_filter"
+    echo "pls input str"
+elif [  "$2"x = "-w"x  ]
+then
+    grep -nrw --color=auto $1 .
+    echo "grep -nrw --color=auto $1 ."
+elif [ "$2x" = "findx" ] 
+then
+#	echo "no do"
+    find . -name $3  -exec grep -nH  --color=auto $1 {} \;
+    #echo "find . -name "$3" -exec grep -nH --color=auto $1 {} \;"
+else
+    grep -nr --color=auto $1 .
+    echo "grep -nr --color=auto $1 ."
+fi
